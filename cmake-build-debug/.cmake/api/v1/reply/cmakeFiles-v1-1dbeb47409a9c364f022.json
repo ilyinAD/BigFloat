@@ -152,13 +152,16 @@
 		},
 		{
 			"path" : "BigInt/CMakeLists.txt"
+		},
+		{
+			"path" : "BIgFloat/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/MyDoc/BigFloat/BigFloat/cmake-build-debug",
-		"source" : "C:/MyDoc/BigFloat/BigFloat"
+		"build" : "C:/MyDoc/BigFloat/Project/cmake-build-debug",
+		"source" : "C:/MyDoc/BigFloat/Project"
 	},
 	"version" : 
 	{

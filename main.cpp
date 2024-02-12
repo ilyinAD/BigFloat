@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BIgInt.h"
+#include "BIgFloat.h"
 using namespace mathclass;
 
 void show(BIgInt a) {

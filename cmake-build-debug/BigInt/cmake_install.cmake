@@ -1,4 +1,4 @@
-# Install script for directory: C:/MyDoc/BigFloat/BigFloat/BigInt
+# Install script for directory: C:/MyDoc/BigFloat/Project/BigInt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,6 +1,9 @@
-C:/MyDoc/BigFloat/BigFloat/cmake-build-debug/CMakeFiles/BigFloat.dir
-C:/MyDoc/BigFloat/BigFloat/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/MyDoc/BigFloat/BigFloat/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/MyDoc/BigFloat/BigFloat/cmake-build-debug/BigInt/CMakeFiles/BigInt.dir
-C:/MyDoc/BigFloat/BigFloat/cmake-build-debug/BigInt/CMakeFiles/edit_cache.dir
-C:/MyDoc/BigFloat/BigFloat/cmake-build-debug/BigInt/CMakeFiles/rebuild_cache.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/CMakeFiles/BigFloat.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/BigInt/CMakeFiles/BigInt.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/BigInt/CMakeFiles/edit_cache.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/BigInt/CMakeFiles/rebuild_cache.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/BIgFloat/CMakeFiles/BIgFloat.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/BIgFloat/CMakeFiles/edit_cache.dir
+C:/MyDoc/BigFloat/Project/cmake-build-debug/BIgFloat/CMakeFiles/rebuild_cache.dir

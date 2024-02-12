@@ -8,7 +8,8 @@
 					"build" : ".",
 					"childIndexes" : 
 					[
-						1
+						1,
+						2
 					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
@@ -19,7 +20,7 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						1
 					]
 				},
 				{
@@ -34,7 +35,22 @@
 					"source" : "BigInt",
 					"targetIndexes" : 
 					[
-						1
+						2
+					]
+				},
+				{
+					"build" : "BIgFloat",
+					"jsonFile" : "directory-BIgFloat-Debug-432a036bf110450b8c89.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "BIgFloat",
+					"targetIndexes" : 
+					[
+						0
 					]
 				}
 			],
@@ -45,22 +61,31 @@
 					"directoryIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					],
 					"name" : "BigFloat",
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
+					"directoryIndex" : 2,
+					"id" : "BIgFloat::@c4e2e4995de06ba26ff1",
+					"jsonFile" : "target-BIgFloat-Debug-eefc1e5650b10fd4385b.json",
+					"name" : "BIgFloat",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 0,
 					"id" : "BigFloat::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-BigFloat-Debug-521ea7dcbc59342cde8c.json",
+					"jsonFile" : "target-BigFloat-Debug-0122f85a5a4abdfd7ae7.json",
 					"name" : "BigFloat",
 					"projectIndex" : 0
 				},
@@ -77,8 +102,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/MyDoc/BigFloat/BigFloat/cmake-build-debug",
-		"source" : "C:/MyDoc/BigFloat/BigFloat"
+		"build" : "C:/MyDoc/BigFloat/Project/cmake-build-debug",
+		"source" : "C:/MyDoc/BigFloat/Project"
 	},
 	"version" : 
 	{
