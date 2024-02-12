@@ -8,8 +8,7 @@
 					"build" : ".",
 					"childIndexes" : 
 					[
-						1,
-						2
+						1
 					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
@@ -20,37 +19,22 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						1
-					]
-				},
-				{
-					"build" : "BigInt",
-					"jsonFile" : "directory-BigInt-Debug-682a96af8ae588f8dc87.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.27"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "BigInt",
-					"targetIndexes" : 
-					[
-						2
-					]
-				},
-				{
-					"build" : "BIgFloat",
-					"jsonFile" : "directory-BIgFloat-Debug-432a036bf110450b8c89.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.27"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "BIgFloat",
-					"targetIndexes" : 
-					[
 						0
+					]
+				},
+				{
+					"build" : "bignum",
+					"jsonFile" : "directory-bignum-Debug-152da18c100e7e006272.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "bignum",
+					"targetIndexes" : 
+					[
+						1
 					]
 				}
 			],
@@ -61,39 +45,30 @@
 					"directoryIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					],
-					"name" : "BigFloat",
+					"name" : "Project",
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 2,
-					"id" : "BIgFloat::@c4e2e4995de06ba26ff1",
-					"jsonFile" : "target-BIgFloat-Debug-eefc1e5650b10fd4385b.json",
-					"name" : "BIgFloat",
-					"projectIndex" : 0
-				},
-				{
 					"directoryIndex" : 0,
-					"id" : "BigFloat::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-BigFloat-Debug-0122f85a5a4abdfd7ae7.json",
-					"name" : "BigFloat",
+					"id" : "Project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Project-Debug-4c80783987fd37e395f2.json",
+					"name" : "Project",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
-					"id" : "BigInt::@1312ca6572f2fe6c9e4a",
-					"jsonFile" : "target-BigInt-Debug-53c35015aca24681a2f5.json",
-					"name" : "BigInt",
+					"id" : "bignum::@ed4a6307b3c6eb4fb303",
+					"jsonFile" : "target-bignum-Debug-a5d1f19a5eaa545b9f8a.json",
+					"name" : "bignum",
 					"projectIndex" : 0
 				}
 			]

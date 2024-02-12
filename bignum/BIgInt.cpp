@@ -3,8 +3,6 @@
 //
 #include <iostream>
 #include "BIgInt.h"
-#include <algorithm>
-#include <math.h>
 namespace mathclass {
     BIgInt::BIgInt(const mathclass::BIgInt &num) {
         for (int i = 0; i < num.digit.size(); ++i) {
@@ -68,7 +66,7 @@ namespace mathclass {
         for (int i = 0; i < left.digit.size(); ++i) {
             if (left.digit[i] < right.digit[i]) {
                 return true;
-            } else if (left.digit[i] < right.digit[i]) {
+            } else if (left.digit[i] > right.digit[i]) {
                 return false;
             }
         }

@@ -8,7 +8,7 @@
 	"installers" : [],
 	"paths" : 
 	{
-		"build" : "BIgFloat",
-		"source" : "BIgFloat"
+		"build" : "bignum",
+		"source" : "bignum"
 	}
 }

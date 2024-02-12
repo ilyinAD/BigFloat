@@ -1,1 +1,0 @@
-add_library(BIgFloat BIgFloat.cpp)

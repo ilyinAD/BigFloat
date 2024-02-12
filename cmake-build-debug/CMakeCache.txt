@@ -15,6 +15,42 @@
 ########################
 
 //Value Computed by CMake
+ BigNum/BIgFloat_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug
+
+//Value Computed by CMake
+ BigNum/BIgFloat_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+ BigNum/BIgFloat_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project
+
+//Value Computed by CMake
+ BigNum_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/ BigNum
+
+//Value Computed by CMake
+ BigNum_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ BigNum_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/ BigNum
+
+//Value Computed by CMake
+BIgFloat_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/BIgFloat
+
+//Value Computed by CMake
+BIgFloat_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+BIgFloat_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/BIgFloat
+
+//Value Computed by CMake
+BIgInt_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/BigInt
+
+//Value Computed by CMake
+BIgInt_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+BIgInt_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/BigInt
+
+//Value Computed by CMake
 BigFloat_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug
 
 //Value Computed by CMake
@@ -22,6 +58,42 @@ BigFloat_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 BigFloat_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project
+
+//Value Computed by CMake
+BigInt_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/BigInt
+
+//Value Computed by CMake
+BigInt_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+BigInt_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/BigInt
+
+//Value Computed by CMake
+BigNum1_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/ BigNum
+
+//Value Computed by CMake
+BigNum1_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+BigNum1_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/ BigNum
+
+//Value Computed by CMake
+BigNum_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/ BigNum
+
+//Value Computed by CMake
+BigNum_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+BigNum_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/ BigNum
+
+//Value Computed by CMake
+Bigfloat_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug
+
+//Value Computed by CMake
+Bigfloat_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Bigfloat_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=C:/Program Files/JetBrains/CLion 2023.3.3/bin/mingw/bin/addr2line.exe
@@ -166,7 +238,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=BigFloat
+CMAKE_PROJECT_NAME:STATIC=Project
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Program Files/JetBrains/CLion 2023.3.3/bin/mingw/bin/ranlib.exe
@@ -259,6 +331,15 @@ Project_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project
+
+//Value Computed by CMake
+tut_BINARY_DIR:STATIC=C:/MyDoc/BigFloat/Project/cmake-build-debug/bignum
+
+//Value Computed by CMake
+tut_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+tut_SOURCE_DIR:STATIC=C:/MyDoc/BigFloat/Project/bignum
 
 
 ########################
@@ -363,7 +444,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
