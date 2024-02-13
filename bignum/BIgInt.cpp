@@ -3,6 +3,8 @@
 //
 #include <iostream>
 #include "BIgInt.h"
+#include <algorithm>
+
 namespace mathclass {
     BIgInt::BIgInt(const mathclass::BIgInt &num) {
         for (int i = 0; i < num.digit.size(); ++i) {
@@ -11,6 +13,12 @@ namespace mathclass {
         sign = num.sign;
     }
 
+//    BIgInt::BIgInt(const BIgFloat &num) {
+//        for (int i = 0; i < num.digit.size(); ++i) {
+//            digit.push_back(num.digit[i]);
+//        }
+//        sign = num.sign;
+//    }
 
     void BIgInt::delete_leadings_zeroes() {
         while (!BIgInt::digit.empty() && BIgInt::digit[BIgInt::digit.size() - 1] == 0) {
@@ -58,6 +66,9 @@ namespace mathclass {
     bool operator <(const BIgInt& left, const BIgInt& right) {
         if (left == right) {
             return false;
+        }
+        if (left.sign != right.sign) {
+            return left.sign < right.sign;
         }
         if (left.digit.size() != right.digit.size()) {
             return left.digit.size() < right.digit.size();
@@ -181,4 +192,83 @@ namespace mathclass {
         sub.delete_leadings_zeroes();
         return sub;
     }
+
+    void karatsuba(int *a, int *b, int *c, int n) {
+        if (n <= 100) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    c[i + j] += a[i] * b[j];
+                }
+            }
+            return;
+        }
+        int k = n / 2;
+        int l[k], r[k], t[n], p1[n], p2[n];
+        std::fill(l, l + k, 0);
+        std::fill(r, r + k, 0);
+        std::fill(t, t + n, 0);
+        std::fill(p1, p1 + n, 0);
+        std::fill(p2, p2 + n, 0);
+        for (int i = 0; i < k; i++) {
+            l[i] = a[i] + a[k + i];
+            r[i] = b[i] + b[k + i];
+        }
+        karatsuba(l, r, t, k);
+        karatsuba(a, b, p1, k);
+        karatsuba(a + k, b + k, p2, k);
+        for (int i = 0; i < n; i++) {
+            c[i] += p1[i];
+            c[i + n] += p2[i];
+            c[i + k] += t[i] - p1[i] - p2[i];
+        }
+    }
+
+    const BIgInt operator *(const BIgInt& left, const BIgInt& right) {
+        int sz = std::max(left.digit.size(), right.digit.size());
+        int l = 0;
+        int r = 32;
+        while (l + 1 != r) {
+            int m = (l + r) / 2;
+            if ((1 << m) < sz) {
+                l = m;
+            } else {
+                r = m;
+            }
+        }
+        int need_sz = (1 << r);
+        if (sz == 1) {
+            need_sz = 1;
+        }
+        int a[need_sz], b[need_sz];
+        std::fill(a, a + need_sz, 0);
+        std::fill(b, b + need_sz, 0);
+        for (int i = 0; i < need_sz; ++i) {
+            if (i >= left.digit.size()) {
+                a[i] = 0;
+            } else {
+                a[i] = left.digit[i];
+            }
+            if (i >= right.digit.size()) {
+                b[i] = 0;
+            } else {
+                b[i] = right.digit[i];
+            }
+        }
+        int c[2 * need_sz];
+        std::fill(c, c + 2 * need_sz, 0);
+        karatsuba(a, b, c, need_sz);
+        BIgInt mul;
+        mul.sign = left.sign * right.sign;
+        for (int i = 0; i < 2 * need_sz; ++i) {
+            int val = c[i] % 10;
+            mul.digit.push_back(val);
+            if ((c[i] / 10) != 0) {
+                c[i + 1] += (c[i] / 10);
+            }
+        }
+        mul.delete_leadings_zeroes();
+        return mul;
+    }
 }
+
+

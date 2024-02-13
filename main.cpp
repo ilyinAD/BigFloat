@@ -1,6 +1,8 @@
 #include <iostream>
 #include "bignum/BIgInt.h"
 #include "bignum/BIgFloat.h"
+#include <algorithm>
+#include <vector>
 using namespace mathclass;
 
 void show(BIgInt a) {
@@ -34,21 +36,33 @@ void show(BIgFloat a) {
     std::cout << std::endl;
 }
 
+
+
+
 int main() {
-    BIgInt obj2("1");
-    BIgInt obj1("12");
-    BIgInt obj3("19999");
-    BIgInt obj4("-2434");
-    BIgInt obj5("0");
-        BIgInt obj6("111111");
-    BIgInt obj7("8678");
-    BIgFloat o1("123");
-    BIgFloat o2("12.34224424");
-    BIgFloat o3("9795374.342545424");
-    BIgFloat o4("11450.13535345349594");
-    show(o4+o3);
+//    BIgInt obj2("1");
+//    BIgInt obj1("12");
+//    BIgInt obj3("19999");
+//    BIgInt obj4("-2434");
+//    BIgInt obj5("0");
+//    BIgInt obj6("111111");
+//    show(obj3 * obj4);
+    BIgInt obj7("0");
+    BIgFloat o1("-0.989348239");
+    BIgFloat o2("3424324.234");
+    BIgFloat o3("444233.9934324");
+    BIgFloat o4("-432432434.143091");
+    show(o1 * o2);
+//    show(o2+o4);
+//    show(o1-o2);
+//    show(o1-o3);
+    //std::cout << (o3 < o4) << ' ' << (o3 == o4) << ' ' << (o1 >= o1) << ' ' << (o3 < o4) << ' ' << (o1 < o2);
 //    show(o2);
 //    show(o3);
 //    show(o4);
+//    int a[4] = {1, 9, 9, 0};
+//    int b[4] = {1, 0, 4, 0};
+//    int c[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+//    karatsuba(a, b, c, 4);
     return 0;
 }

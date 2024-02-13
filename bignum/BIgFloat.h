@@ -13,7 +13,8 @@
 class BIgFloat{
 public:
     BIgFloat() = default;
-    BIgFloat(const BIgFloat&);
+    BIgFloat(const BIgFloat& num);
+    BIgFloat(const mathclass::BIgInt& num);
     ~BIgFloat() = default;
     BIgFloat(std::string s) {
         setBIgFloat(s);
@@ -28,6 +29,7 @@ public:
     friend bool operator >=(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right);
+    friend const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator +(const BIgFloat& left);
     friend const BIgFloat operator -(const BIgFloat& left);
     //delete_leadings_zeroes()
