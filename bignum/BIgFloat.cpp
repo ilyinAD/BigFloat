@@ -78,8 +78,8 @@ bool operator <(const BIgFloat& left, const BIgFloat& right) {
     if ((right.digit.size() - right.index) != (left.digit.size() - left.index)) {
         return (left.digit.size() - left.index) < (right.digit.size() - right.index);
     }
-    int i = left.index - 1;
-    int j = right.index - 1;
+    int i = left.digit.size() - 1;
+    int j = right.digit.size() - 1;
     while (i != -1 && j != -1) {
         int val1 = 0;
         if (i != -1) {
@@ -127,6 +127,14 @@ const BIgFloat operator +(BIgFloat& left) {
     return num;
 }
 
+std::string get_str(const BIgFloat& num) {
+    std::string sl;
+    for (int i = num.digit.size() - 1; i >= 0; --i) {
+        sl += (num.digit[i] + '0');
+    }
+    return sl;
+}
+
 const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right) {
     if (left.sign == -1) {
         if (right.sign == -1) {
@@ -140,60 +148,28 @@ const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right) {
     if (left < right) {
         return right + left;
     }
-    std::string sl;
-    std::string sr;
-    int i = std::max(left.index, right.index) - 1;
-    while (i >= 0) {
-        if (i >= left.index){
-            sl += '0';
-        } else {
-            sl += (left.digit[left.index - i - 1] + '0');
-        }
-        if (i >= right.index){
-            sr += '0';
-        } else {
-            sr += (right.digit[right.index - i - 1] + '0');
-        }
-        --i;
-    }
-    reverse(all(sl));
-    reverse(all(sr));
-    BIgInt fr1(sl);
-    BIgInt fr2(sr);
-    BIgInt add_fract = fr1 + fr2;
-    std::string ans;
-    for (int i = 0; i < std::max(sl.size(), sr.size()); ++i) {
-        ans += (add_fract.digit[i] + '0');
-    }
-    int flag = 0;
-    if (std::max(sl.size(), sr.size()) < add_fract.digit.size()) {
-        flag = 1;
-    }
-    ans += '.';
-    sl = "";
-    sr = "";
-    i = left.index;
-    while (i < left.digit.size()) {
-        sl += (left.digit[i] + '0');
+    std::string sl = get_str(left);
+    std::string sr = get_str(right);
+    int i = 0;
+    while (left.index + i < right.index) {
+        sl += '0';
         ++i;
     }
-    i = right.index;
-    while (i < right.digit.size()) {
-        sr += (right.digit[i] + '0');
+    i = 0;
+    while (right.index + i < left.index) {
+        sr += '0';
         ++i;
     }
-    reverse(all(sl));
-    reverse(all(sr));
     BIgInt in1(sl);
     BIgInt in2(sr);
-    BIgInt add_in = in1 + in2;
-    if (flag == 1)
-        add_in = add_in + BIgInt("1");
-    for (int i = 0; i < add_in.digit.size(); ++i) {
-        ans += (add_in.digit[i] + '0');
+    BIgInt add = in1 + in2;
+    BIgFloat add_ans(add);
+    add_ans.index = std::max(left.index, right.index);
+    if (add_ans.index == add_ans.digit.size()) {
+        add_ans.digit.push_back(0);
     }
-    reverse(all(ans));
-    return BIgFloat(ans);
+    return add_ans;
+
 }
 
 const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right) {
@@ -211,14 +187,8 @@ const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right) {
     if (left < right) {
         return -(right - left);
     }
-    std::string sl;
-    std::string sr;
-    for (int i = left.digit.size() - 1; i >= 0; --i) {
-        sl += (left.digit[i] + '0');
-    }
-    for (int i = right.digit.size() - 1; i >= 0; --i) {
-        sr += (right.digit[i] + '0');
-    }
+    std::string sl = get_str(left);
+    std::string sr = get_str(right);
     int i = 0;
     while (left.index + i < right.index) {
         sl += '0';
@@ -241,14 +211,8 @@ const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right) {
 }
 
 const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right) {
-    std::string sl;
-    std::string sr;
-    for (int i = left.digit.size() - 1; i >= 0; --i) {
-        sl += (left.digit[i] + '0');
-    }
-    for (int i = right.digit.size() - 1; i >= 0; --i) {
-        sr += (right.digit[i] + '0');
-    }
+    std::string sl = get_str(left);
+    std::string sr = get_str(right);
     BIgInt left1(sl);
     BIgInt right1(sr);
     BIgInt mul = left1 * right1;
@@ -257,3 +221,4 @@ const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right) {
     ans_mul.sign = left.sign * right.sign;
     return ans_mul;
 }
+

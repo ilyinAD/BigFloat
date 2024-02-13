@@ -32,6 +32,7 @@ public:
     friend const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator +(const BIgFloat& left);
     friend const BIgFloat operator -(const BIgFloat& left);
+    //friend BIgFloat operator ""_bigfloat(const char *);
     //delete_leadings_zeroes()
     //void show(BIgFloat&);
     std::vector<int> digit;

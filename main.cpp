@@ -35,24 +35,35 @@ void show(BIgFloat a) {
     }
     std::cout << std::endl;
 }
-
-
-
+#include <chrono>
+namespace std::chrono_literals {
+    const BIgFloat operator ""_bigfloat(const char *s) {
+//        std::string str;
+//        while ((*s) != '\0') {
+//            str += s;
+//            ++s;
+//        }
+        return BIgFloat(s);
+    }
+}
+using std::chrono_literals::operator""_bigfloat;
 
 int main() {
-//    BIgInt obj2("1");
-//    BIgInt obj1("12");
-//    BIgInt obj3("19999");
-//    BIgInt obj4("-2434");
-//    BIgInt obj5("0");
-//    BIgInt obj6("111111");
-//    show(obj3 * obj4);
-    BIgInt obj7("0");
-    BIgFloat o1("-0.989348239");
-    BIgFloat o2("3424324.234");
-    BIgFloat o3("444233.9934324");
-    BIgFloat o4("-432432434.143091");
-    show(o1 * o2);
+    BIgInt obj2("2");
+    BIgInt obj1("15");
+    BIgInt obj3("-19999");
+    BIgInt obj4("2434");
+    BIgInt obj5("0");
+    BIgInt obj6("111111");
+    //show(obj3 * obj4);
+//    BIgInt obj7("0");
+//    BIgFloat o1("5");
+//    BIgFloat o2("2");
+//    BIgFloat o3("12.99");
+//    BIgFloat o4("13.01");
+//    std::cout << (o3 < o4) << std::endl;
+    //show(obj3 / obj4);
+    show(-12.12_bigfloat);
 //    show(o2+o4);
 //    show(o1-o2);
 //    show(o1-o3);

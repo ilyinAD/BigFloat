@@ -20,6 +20,14 @@ namespace mathclass {
 //        sign = num.sign;
 //    }
 
+    std::string get_str(const BIgInt& num) {
+        std::string sl;
+        for (int i = num.digit.size() - 1; i >= 0; --i) {
+            sl += (num.digit[i] + '0');
+        }
+        return sl;
+    }
+
     void BIgInt::delete_leadings_zeroes() {
         while (!BIgInt::digit.empty() && BIgInt::digit[BIgInt::digit.size() - 1] == 0) {
             BIgInt::digit.pop_back();
@@ -74,7 +82,7 @@ namespace mathclass {
             return left.digit.size() < right.digit.size();
         }
         //когда будет точка то проверять колво знаков до точки и после нее при равнестве втупую
-        for (int i = 0; i < left.digit.size(); ++i) {
+        for (int i = left.digit.size() - 1; i >= 0; --i) {
             if (left.digit[i] < right.digit[i]) {
                 return true;
             } else if (left.digit[i] > right.digit[i]) {
@@ -111,6 +119,8 @@ namespace mathclass {
         BIgInt num(left);
         return num;
     }
+
+
 
     const BIgInt operator +(const BIgInt& left, const BIgInt& right) {
         int sz = right.digit.size();
@@ -223,6 +233,14 @@ namespace mathclass {
         }
     }
 
+    const BIgInt operator *(const BIgInt& left, const int& right){
+        return left * BIgInt(std::to_string(right));
+    }
+
+    const BIgInt operator *(const int& left, const BIgInt& right){
+        return BIgInt(std::to_string(left)) * right;
+    }
+
     const BIgInt operator *(const BIgInt& left, const BIgInt& right) {
         int sz = std::max(left.digit.size(), right.digit.size());
         int l = 0;
@@ -268,6 +286,51 @@ namespace mathclass {
         }
         mul.delete_leadings_zeroes();
         return mul;
+    }
+
+    int get_digital(const BIgInt &left, const BIgInt &right) {
+        for (int i = 9; i >= 0; --i) {
+            BIgInt q = i * right;
+            if ((i * right) < left) {
+                return i;
+            }
+        }
+        std::cout << "WRONG" << std::endl;
+    }
+
+    const BIgInt operator /(const BIgInt& left, const BIgInt& right) {
+        std::string str = get_str(right);
+        if (str.size() == 0 || (str[0] == '0' && str.size() == 1)) {
+            std::cout << "WRONG" << std::endl;
+            return BIgInt("0");
+        }
+        BIgInt right1(right);
+        BIgInt left1(left);
+        right1.sign = 1;
+        left1.sign = 1;
+        if (left1 < right1) {
+            return BIgInt("0");
+        }
+
+
+        int idx = right1.digit.size();
+        std::string sl;
+        for (int i = left.digit.size() - 1; i > left.digit.size() - 1 - idx; --i) {
+            sl += (left.digit[i] + '0');
+        }
+        std::string ans;
+        if (left.sign != right.sign) {
+            ans += "-";
+        }
+        int num = get_digital(BIgInt(sl), right1);
+        ans += (num + '0');
+        for (int i = left.digit.size() - 1 - idx; i >= 0; --i) {
+            sl = get_str(BIgInt(sl) - (right1 * num));
+            sl += (left.digit[i] + '0');
+            num = get_digital(BIgInt(sl), right1);
+            ans += (num + '0');
+        }
+        return BIgInt(ans);
     }
 }
 

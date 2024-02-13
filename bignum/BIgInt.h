@@ -30,6 +30,9 @@ namespace mathclass {
             friend const BIgInt operator +(const BIgInt& left, const BIgInt& right);
             friend const BIgInt operator -(const BIgInt& left, const BIgInt& right);
             friend const BIgInt operator *(const BIgInt& left, const BIgInt& right);
+            friend const BIgInt operator *(const BIgInt& left, const int& right);
+            friend const BIgInt operator *(const int& left, const BIgInt& right);
+            friend const BIgInt operator /(const BIgInt& left, const BIgInt& right);
             friend const BIgInt operator +(const BIgInt& left);
             friend const BIgInt operator -(const BIgInt& left);
             //delete_leadings_zeroes()
