@@ -152,6 +152,7 @@ namespace mathclass {
         if (shift != 0) {
             sum.digit.push_back(shift);
         }
+        sum.delete_leadings_zeroes();
         return sum;
     }
 
@@ -291,7 +292,7 @@ namespace mathclass {
     int get_digital(const BIgInt &left, const BIgInt &right) {
         for (int i = 9; i >= 0; --i) {
             BIgInt q = i * right;
-            if ((i * right) < left) {
+            if ((i * right) <= left) {
                 return i;
             }
         }
@@ -330,7 +331,9 @@ namespace mathclass {
             num = get_digital(BIgInt(sl), right1);
             ans += (num + '0');
         }
-        return BIgInt(ans);
+        BIgInt answer(ans);
+        answer.delete_leadings_zeroes();
+        return answer;
     }
 }
 

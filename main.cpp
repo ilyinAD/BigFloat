@@ -38,32 +38,36 @@ void show(BIgFloat a) {
 #include <chrono>
 namespace std::chrono_literals {
     const BIgFloat operator ""_bigfloat(const char *s) {
-//        std::string str;
-//        while ((*s) != '\0') {
-//            str += s;
-//            ++s;
-//        }
         return BIgFloat(s);
     }
 }
 using std::chrono_literals::operator""_bigfloat;
 
+BIgFloat pi(int idx) {
+    BIgFloat Pi("0");
+    while (Pi.index < idx) {
+
+    }
+}
+
 int main() {
-    BIgInt obj2("2");
-    BIgInt obj1("15");
-    BIgInt obj3("-19999");
-    BIgInt obj4("2434");
-    BIgInt obj5("0");
-    BIgInt obj6("111111");
+//    BIgInt obj2("2");
+//    BIgInt obj1("15");
+//    BIgInt obj3("-19999");
+//    BIgInt obj4("2434");
+//    BIgInt obj5("0");
+//    BIgInt obj6("111111");
     //show(obj3 * obj4);
 //    BIgInt obj7("0");
+    std::cout << (12.12_bigfloat).index;
 //    BIgFloat o1("5");
 //    BIgFloat o2("2");
-//    BIgFloat o3("12.99");
-//    BIgFloat o4("13.01");
+//    BIgFloat o3("-1257495374598759.997535438543759435345984375349543857845734581111111111111111111111111111111111111111111111111111111111111");
+//    BIgFloat o4("-4723472342947238479324782.4927439874294732473284732473847239472111111111111111111111111111111111111111111111111111111111");
+//    show(o3 * o4);
 //    std::cout << (o3 < o4) << std::endl;
     //show(obj3 / obj4);
-    show(-12.12_bigfloat);
+    //show(o4 / o3);
 //    show(o2+o4);
 //    show(o1-o2);
 //    show(o1-o3);

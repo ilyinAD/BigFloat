@@ -53,6 +53,20 @@ void BIgFloat::setBIgFloat(std::string s) {
         BIgFloat::digit.push_back(0);
     }
 }
+
+void BIgFloat::delete_leadings_zeroes() {
+    std::vector<int> v = BIgFloat::digit;
+    int cnt = 0;
+    while (BIgFloat::index > 0 && BIgFloat::digit[cnt] == 0) {
+        --BIgFloat::index;
+        ++cnt;
+    }
+    BIgFloat::digit.clear();
+    for (int i = cnt; i < v.size(); ++i) {
+        BIgFloat::digit.push_back(v[i]);
+    }
+}
+
 bool operator ==(const BIgFloat& left, const BIgFloat& right) {
     if (left.sign != right.sign || right.digit.size() != left.digit.size()) {
         return false;
@@ -129,6 +143,9 @@ const BIgFloat operator +(BIgFloat& left) {
 
 std::string get_str(const BIgFloat& num) {
     std::string sl;
+    if (num.sign == -1) {
+        sl += '-';
+    }
     for (int i = num.digit.size() - 1; i >= 0; --i) {
         sl += (num.digit[i] + '0');
     }
@@ -168,6 +185,7 @@ const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right) {
     if (add_ans.index == add_ans.digit.size()) {
         add_ans.digit.push_back(0);
     }
+    add_ans.delete_leadings_zeroes();
     return add_ans;
 
 }
@@ -207,6 +225,7 @@ const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right) {
     if (sub_ans.index == sub_ans.digit.size()) {
         sub_ans.digit.push_back(0);
     }
+    sub_ans.delete_leadings_zeroes();
     return sub_ans;
 }
 
@@ -218,7 +237,22 @@ const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right) {
     BIgInt mul = left1 * right1;
     BIgFloat ans_mul(mul);
     ans_mul.index = left.index + right.index;
-    ans_mul.sign = left.sign * right.sign;
+    //ans_mul.sign = left.sign * right.sign;
+    ans_mul.delete_leadings_zeroes();
     return ans_mul;
 }
 
+const BIgFloat operator /(const BIgFloat& left, const BIgFloat& right) {
+    std::string sl = get_str(left);
+    std::string sr = get_str(right);
+    for (int i = 0; i < left.precision; ++i) {
+        sl += '0';
+    }
+    BIgInt div1(sl);
+    BIgInt div2(sr);
+    BIgInt ans_div = div1 / div2;
+    BIgFloat ans(ans_div);
+    ans.index = left.precision;
+    ans.delete_leadings_zeroes();
+    return ans;
+}

@@ -30,14 +30,17 @@ public:
     friend const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right);
+    friend const BIgFloat operator /(const BIgFloat& left, const BIgFloat& right);
     friend const BIgFloat operator +(const BIgFloat& left);
     friend const BIgFloat operator -(const BIgFloat& left);
+    //namespace std::chrono_literals{};
     //friend BIgFloat operator ""_bigfloat(const char *);
     //delete_leadings_zeroes()
     //void show(BIgFloat&);
     std::vector<int> digit;
     int sign;
     int index;
+    const int precision = 9;
 };
 
 
