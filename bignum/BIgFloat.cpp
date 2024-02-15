@@ -7,13 +7,13 @@
 #include <algorithm>
 #define all(x) x.begin(), x.end()
 using namespace mathclass;
-BIgFloat::BIgFloat(const BIgFloat &num) {
-    for (int i = 0; i < num.digit.size(); ++i) {
-        digit.push_back(num.digit[i]);
-    }
-    sign = num.sign;
-    index = num.index;
-}
+//BIgFloat::BIgFloat(const BIgFloat &num) {
+//    for (int i = 0; i < num.digit.size(); ++i) {
+//        digit.push_back(num.digit[i]);
+//    }
+//    sign = num.sign;
+//    index = num.index;
+//}
 
 BIgFloat::BIgFloat(const mathclass::BIgInt &num) {
     for (int i = 0; i < num.digit.size(); ++i) {
@@ -24,6 +24,12 @@ BIgFloat::BIgFloat(const mathclass::BIgInt &num) {
 }
 
 void BIgFloat::setBIgFloat(std::string s) {
+    if (s.size() == 1 && s[0] == '0') {
+        BIgFloat::digit = {0};
+        BIgFloat::sign = 1;
+        BIgFloat::index = 0;
+        return;
+    }
     BIgFloat::index = 0;
     BIgFloat::sign = 1;
     if (s.size() == 0) {
@@ -55,6 +61,9 @@ void BIgFloat::setBIgFloat(std::string s) {
 }
 
 void BIgFloat::delete_leadings_zeroes() {
+    if (BIgFloat::digit.size() == 1 && BIgFloat::digit[0] == 0) {
+        return;
+    }
     std::vector<int> v = BIgFloat::digit;
     int cnt = 0;
     while (BIgFloat::index > 0 && BIgFloat::digit[cnt] == 0) {
@@ -89,12 +98,17 @@ bool operator <(const BIgFloat& left, const BIgFloat& right) {
     if (left.sign != right.sign) {
         return left.sign < right.sign;
     }
+
+//    if (left.digit.size() == 0) {
+//        return right.index == 0;
+//    }
+
     if ((right.digit.size() - right.index) != (left.digit.size() - left.index)) {
         return (left.digit.size() - left.index) < (right.digit.size() - right.index);
     }
     int i = left.digit.size() - 1;
     int j = right.digit.size() - 1;
-    while (i != -1 && j != -1) {
+    while (i != -1 || j != -1) {
         int val1 = 0;
         if (i != -1) {
             val1 = left.digit[i];
@@ -239,6 +253,9 @@ const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right) {
     ans_mul.index = left.index + right.index;
     //ans_mul.sign = left.sign * right.sign;
     ans_mul.delete_leadings_zeroes();
+    while (ans_mul.index >= ans_mul.digit.size()) {
+        ans_mul.digit.push_back(0);
+    }
     return ans_mul;
 }
 
@@ -252,7 +269,10 @@ const BIgFloat operator /(const BIgFloat& left, const BIgFloat& right) {
     BIgInt div2(sr);
     BIgInt ans_div = div1 / div2;
     BIgFloat ans(ans_div);
-    ans.index = left.precision;
+    ans.index = left.precision + left.index - right.index;
+    while (ans.index >= ans.digit.size()) {
+        ans.digit.push_back(0);
+    }
     ans.delete_leadings_zeroes();
     return ans;
 }

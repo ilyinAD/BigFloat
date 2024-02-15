@@ -3,6 +3,9 @@
 #include "bignum/BIgFloat.h"
 #include <algorithm>
 #include <vector>
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+#pragma optimize("Ofast")
 using namespace mathclass;
 
 void show(BIgInt a) {
@@ -44,13 +47,40 @@ namespace std::chrono_literals {
 using std::chrono_literals::operator""_bigfloat;
 
 BIgFloat pi(int idx) {
-    BIgFloat Pi("0");
-    while (Pi.index < idx) {
-
+    clock_t start, finish;
+    start = clock();
+    if (idx == 0) {
+        return BIgFloat("3");
     }
+    BIgFloat Pi("0");
+    BIgInt deg_16("1");
+    std::string prec = "0.";
+    int idx1 = idx;
+    while (idx1 > 1) {
+        prec += '0';
+        --idx1;
+    }
+    prec += '1';
+    BIgFloat prc(prec);
+    BIgFloat res = {"0"};
+    BIgFloat k("0");
+    do  {
+        res = (BIgFloat("1") / deg_16);
+        BIgFloat res1 = (BIgFloat("4") / (BIgFloat("8") * k + BIgFloat("1"))) - (BIgFloat("2") / (BIgFloat("8") * k + BIgFloat("4"))) -
+        (BIgFloat("1") / (BIgFloat("8") * k + BIgFloat("5"))) - (BIgFloat("1") / (BIgFloat("8") * k + BIgFloat("6")));
+        res = res * res1;
+        Pi = Pi + res;
+        deg_16 = deg_16 * BIgInt("16");
+        k = k + BIgFloat("1");
+    } while(res > prc);
+    finish = clock();
+    double duration = (double)(finish - start) / CLOCKS_PER_SEC;
+    std::cout << duration << std::endl;
+    return Pi;
 }
 
 int main() {
+    show(pi(100));
 //    BIgInt obj2("2");
 //    BIgInt obj1("15");
 //    BIgInt obj3("-19999");
@@ -59,7 +89,7 @@ int main() {
 //    BIgInt obj6("111111");
     //show(obj3 * obj4);
 //    BIgInt obj7("0");
-    std::cout << (12.12_bigfloat).index;
+    //show(12.12_bigfloat / 0.234_bigfloat);
 //    BIgFloat o1("5");
 //    BIgFloat o2("2");
 //    BIgFloat o3("-1257495374598759.997535438543759435345984375349543857845734581111111111111111111111111111111111111111111111111111111111111");

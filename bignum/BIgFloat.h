@@ -13,7 +13,12 @@
 class BIgFloat{
 public:
     BIgFloat() = default;
-    BIgFloat(const BIgFloat& num);
+    BIgFloat(const BIgFloat& other) {
+        this->sign = other.sign;
+        this->index = other.index;
+        this->digit = other.digit;
+    }
+    //BIgFloat(const BIgFloat& num);
     BIgFloat(const mathclass::BIgInt& num);
     ~BIgFloat() = default;
     BIgFloat(std::string s) {
@@ -40,7 +45,7 @@ public:
     std::vector<int> digit;
     int sign;
     int index;
-    const int precision = 9;
+    int precision = 100;
 };
 
 

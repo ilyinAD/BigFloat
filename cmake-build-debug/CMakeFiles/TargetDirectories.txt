@@ -1,6 +1,0 @@
-C:/MyDoc/BigFloat/Project/cmake-build-debug/CMakeFiles/Project.dir
-C:/MyDoc/BigFloat/Project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/MyDoc/BigFloat/Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/MyDoc/BigFloat/Project/cmake-build-debug/bignum/CMakeFiles/bignum.dir
-C:/MyDoc/BigFloat/Project/cmake-build-debug/bignum/CMakeFiles/edit_cache.dir
-C:/MyDoc/BigFloat/Project/cmake-build-debug/bignum/CMakeFiles/rebuild_cache.dir

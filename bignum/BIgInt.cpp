@@ -29,15 +29,24 @@ namespace mathclass {
     }
 
     void BIgInt::delete_leadings_zeroes() {
+        if (BIgInt::digit.size() == 1 && BIgInt::digit[0] == 0) {
+            return;
+        }
         while (!BIgInt::digit.empty() && BIgInt::digit[BIgInt::digit.size() - 1] == 0) {
             BIgInt::digit.pop_back();
         }
         if (BIgInt::digit.size() == 0) {
             BIgInt::sign = 1;
+            BIgInt::digit.push_back(0);
             return;
         }
     }
     void BIgInt::setBIgInt(std::string s) {
+        if (s.size() == 1 && s[0] == '0') {
+            BIgInt::digit = {0};
+            BIgInt::sign = 1;
+            return;
+        }
         BIgInt::sign = 1;
         if (s.size() == 0) {
             return;
@@ -290,12 +299,24 @@ namespace mathclass {
     }
 
     int get_digital(const BIgInt &left, const BIgInt &right) {
-        for (int i = 9; i >= 0; --i) {
-            BIgInt q = i * right;
-            if ((i * right) <= left) {
-                return i;
+//        for (int i = 9; i >= 0; --i) {
+//            BIgInt q = i * right;
+//            if ((i * right) <= left) {
+//                return i;
+//            }
+//        }
+        int l = 0;
+        int r = 10;
+        while (l + 1 != r) {
+            int m = (l + r) / 2;
+            //BIgInt q = m * right;
+            if ((m * right) <= left) {
+                l = m;
+            } else {
+                r = m;
             }
         }
+        return l;
         std::cout << "WRONG" << std::endl;
     }
 
