@@ -1,1 +1,1 @@
-add_library(bignum BIgFloat.cpp BIgInt.cpp)
+add_library(bignum BigFloat.cpp BigInt.cpp)

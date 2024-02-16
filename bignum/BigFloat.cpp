@@ -2,12 +2,12 @@
 // Created by artem on 12.02.2024.
 //
 
-#include "BIgFloat.h"
-#include "BIgInt.h"
+#include "BigFloat.h"
+#include "BigInt.h"
 #include <algorithm>
 #define all(x) x.begin(), x.end()
 using namespace mathclass;
-//BIgFloat::BIgFloat(const BIgFloat &num) {
+//BigFloat::BigFloat(const BigFloat &num) {
 //    for (int i = 0; i < num.digit.size(); ++i) {
 //        digit.push_back(num.digit[i]);
 //    }
@@ -15,7 +15,7 @@ using namespace mathclass;
 //    index = num.index;
 //}
 
-BIgFloat::BIgFloat(const mathclass::BIgInt &num) {
+BigFloat::BigFloat(const mathclass::BigInt &num) {
     for (int i = 0; i < num.digit.size(); ++i) {
         digit.push_back(num.digit[i]);
     }
@@ -23,60 +23,60 @@ BIgFloat::BIgFloat(const mathclass::BIgInt &num) {
     index = 0;
 }
 
-void BIgFloat::setBIgFloat(std::string s) {
+BigFloat::BigFloat(std::string s) {
     if (s.size() == 1 && s[0] == '0') {
-        BIgFloat::digit = {0};
-        BIgFloat::sign = 1;
-        BIgFloat::index = 0;
+        BigFloat::digit = "0";
+        BigFloat::sign = 1;
+        BigFloat::index = 0;
         return;
     }
-    BIgFloat::index = 0;
-    BIgFloat::sign = 1;
+    BigFloat::index = 0;
+    BigFloat::sign = 1;
     if (s.size() == 0) {
         return;
     }
     int ind = 0;
     if (s[0] == '-') {
-        BIgFloat::sign = -1;
+        BigFloat::sign = -1;
         ++ind;
     }
     while (s[ind] == '0' && ind < s.size()) {
         ++ind;
     }
     if (ind == s.size()) {
-        BIgFloat::sign = 1;
+        BigFloat::sign = 1;
         return;
     }
 
     for (long long i = s.size() - 1; i >= ind; --i) {
         if (s[i] == '.') {
-            BIgFloat::index = s.size() - 1 - i;
+            BigFloat::index = s.size() - 1 - i;
             continue;
         }
-        BIgFloat::digit.push_back(s[i] - '0');
+        BigFloat::digit.push_back(s[i]);
     }
-    if (BIgFloat::index == BIgFloat::digit.size()) {
-        BIgFloat::digit.push_back(0);
+    if (BigFloat::index == BigFloat::digit.size()) {
+        BigFloat::digit.push_back('0');
     }
 }
 
-void BIgFloat::delete_leadings_zeroes() {
-    if (BIgFloat::digit.size() == 1 && BIgFloat::digit[0] == 0) {
+void BigFloat::delete_leadings_zeroes() {
+    if (BigFloat::digit.size() == 1 && BigFloat::digit[0] == '0') {
         return;
     }
-    std::vector<int> v = BIgFloat::digit;
+    std::string v = BigFloat::digit;
     int cnt = 0;
-    while (BIgFloat::index > 0 && BIgFloat::digit[cnt] == 0) {
-        --BIgFloat::index;
+    while (BigFloat::index > 0 && BigFloat::digit[cnt] == '0') {
+        --BigFloat::index;
         ++cnt;
     }
-    BIgFloat::digit.clear();
+    BigFloat::digit.clear();
     for (int i = cnt; i < v.size(); ++i) {
-        BIgFloat::digit.push_back(v[i]);
+        BigFloat::digit.push_back(v[i]);
     }
 }
 
-bool operator ==(const BIgFloat& left, const BIgFloat& right) {
+bool operator ==(const BigFloat& left, const BigFloat& right) {
     if (left.sign != right.sign || right.digit.size() != left.digit.size()) {
         return false;
     }
@@ -91,7 +91,7 @@ bool operator ==(const BIgFloat& left, const BIgFloat& right) {
     return true;
 }
 
-bool operator <(const BIgFloat& left, const BIgFloat& right) {
+bool operator <(const BigFloat& left, const BigFloat& right) {
     if (left == right) {
         return false;
     }
@@ -111,12 +111,12 @@ bool operator <(const BIgFloat& left, const BIgFloat& right) {
     while (i != -1 || j != -1) {
         int val1 = 0;
         if (i != -1) {
-            val1 = left.digit[i];
+            val1 = left.digit[i] - '0';
             --i;
         }
         int val2 = 0;
         if (j != -1) {
-            val2 = right.digit[j];
+            val2 = right.digit[j] - '0';
             --j;
         }
         if (val1 < val2) {
@@ -128,45 +128,45 @@ bool operator <(const BIgFloat& left, const BIgFloat& right) {
     std::cout << "WRONG" << std::endl;
 }
 
-bool operator <=(const BIgFloat& left, const BIgFloat& right) {
+bool operator <=(const BigFloat& left, const BigFloat& right) {
     return (left < right || left == right);
 }
 
-bool operator >=(const BIgFloat& left, const BIgFloat& right) {
+bool operator >=(const BigFloat& left, const BigFloat& right) {
     return !(left < right);
 }
 
-bool operator >(const BIgFloat& left, const BIgFloat& right) {
+bool operator >(const BigFloat& left, const BigFloat& right) {
     return !(left <= right);
 }
 
-bool operator !=(const BIgFloat& left, const BIgFloat& right) {
+bool operator !=(const BigFloat& left, const BigFloat& right) {
     return !(left == right);
 }
 
-const BIgFloat operator -(const BIgFloat& left) {
-    BIgFloat num(left);
+const BigFloat operator -(const BigFloat& left) {
+    BigFloat num(left);
     num.sign *= -1;
     return num;
 }
 
-const BIgFloat operator +(BIgFloat& left) {
-    BIgFloat num(left);
+const BigFloat operator +(BigFloat& left) {
+    BigFloat num(left);
     return num;
 }
 
-std::string get_str(const BIgFloat& num) {
+std::string get_str(const BigFloat& num) {
     std::string sl;
     if (num.sign == -1) {
         sl += '-';
     }
     for (int i = num.digit.size() - 1; i >= 0; --i) {
-        sl += (num.digit[i] + '0');
+        sl += (num.digit[i]);
     }
     return sl;
 }
 
-const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right) {
+const BigFloat operator +(const BigFloat& left, const BigFloat& right) {
     if (left.sign == -1) {
         if (right.sign == -1) {
             return -((-left) + (-right));
@@ -191,20 +191,20 @@ const BIgFloat operator +(const BIgFloat& left, const BIgFloat& right) {
         sr += '0';
         ++i;
     }
-    BIgInt in1(sl);
-    BIgInt in2(sr);
-    BIgInt add = in1 + in2;
-    BIgFloat add_ans(add);
+    BigInt in1(sl);
+    BigInt in2(sr);
+    BigInt add = in1 + in2;
+    BigFloat add_ans(add);
     add_ans.index = std::max(left.index, right.index);
     if (add_ans.index == add_ans.digit.size()) {
-        add_ans.digit.push_back(0);
+        add_ans.digit.push_back('0');
     }
     add_ans.delete_leadings_zeroes();
     return add_ans;
 
 }
 
-const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right) {
+const BigFloat operator -(const BigFloat& left, const BigFloat& right) {
     if (left.sign == 1) {
         if (right.sign == -1) {
             return left + (-right);
@@ -231,47 +231,47 @@ const BIgFloat operator -(const BIgFloat& left, const BIgFloat& right) {
         sr += '0';
         ++i;
     }
-    BIgInt in1(sl);
-    BIgInt in2(sr);
-    BIgInt sub = in1 - in2;
-    BIgFloat sub_ans(sub);
+    BigInt in1(sl);
+    BigInt in2(sr);
+    BigInt sub = in1 - in2;
+    BigFloat sub_ans(sub);
     sub_ans.index = std::max(left.index, right.index);
     if (sub_ans.index == sub_ans.digit.size()) {
-        sub_ans.digit.push_back(0);
+        sub_ans.digit.push_back('0');
     }
     sub_ans.delete_leadings_zeroes();
     return sub_ans;
 }
 
-const BIgFloat operator *(const BIgFloat& left, const BIgFloat& right) {
+const BigFloat operator *(const BigFloat& left, const BigFloat& right) {
     std::string sl = get_str(left);
     std::string sr = get_str(right);
-    BIgInt left1(sl);
-    BIgInt right1(sr);
-    BIgInt mul = left1 * right1;
-    BIgFloat ans_mul(mul);
+    BigInt left1(sl);
+    BigInt right1(sr);
+    BigInt mul = left1 * right1;
+    BigFloat ans_mul(mul);
     ans_mul.index = left.index + right.index;
     //ans_mul.sign = left.sign * right.sign;
     ans_mul.delete_leadings_zeroes();
     while (ans_mul.index >= ans_mul.digit.size()) {
-        ans_mul.digit.push_back(0);
+        ans_mul.digit.push_back('0');
     }
     return ans_mul;
 }
 
-const BIgFloat operator /(const BIgFloat& left, const BIgFloat& right) {
+const BigFloat operator /(const BigFloat& left, const BigFloat& right) {
     std::string sl = get_str(left);
     std::string sr = get_str(right);
     for (int i = 0; i < left.precision; ++i) {
         sl += '0';
     }
-    BIgInt div1(sl);
-    BIgInt div2(sr);
-    BIgInt ans_div = div1 / div2;
-    BIgFloat ans(ans_div);
+    BigInt div1(sl);
+    BigInt div2(sr);
+    BigInt ans_div = div1 / div2;
+    BigFloat ans(ans_div);
     ans.index = left.precision + left.index - right.index;
     while (ans.index >= ans.digit.size()) {
-        ans.digit.push_back(0);
+        ans.digit.push_back('0');
     }
     ans.delete_leadings_zeroes();
     return ans;
