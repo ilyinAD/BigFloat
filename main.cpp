@@ -6,13 +6,12 @@
 #pragma GCC optimize("O3")
 #pragma GCC optimize("unroll-loops")
 #pragma optimize("Ofast")
-using namespace mathclass;
+
+const BigFloat operator ""_bigfloat(const char *s) {
+    return BigFloat(s);
+}
 
 void show(BigInt a) {
-//    if (a.digit.size() == 0) {
-//        std::cout << 0 << std::endl;
-//        return;
-//    }
     if (a.sign == -1) {
         std::cout << '-';
     }
@@ -23,10 +22,6 @@ void show(BigInt a) {
 }
 
 void show(BigFloat a) {
-//    if (a.digit.size() == 0) {
-//        std::cout << 0 << std::endl;
-//        return;
-//    }
     if (a.sign == -1) {
         std::cout << '-';
     }
@@ -41,20 +36,9 @@ void show(BigFloat a) {
 
 #include <chrono>
 
-namespace std::chrono_literals {
-    const BigFloat operator ""_bigfloat(const char *s) {
-        return BigFloat(s);
-    }
-}
-
-using std::chrono_literals::operator""_bigfloat;
-
-BigFloat pi(int idx) {
+BigFloat calculate_pi(int idx) {
     clock_t start, finish;
     start = clock();
-//    if (idx == 0) {
-//        return BigFloat("3");
-//    }
     BigFloat Pi("0");
     BigInt deg_16("1");
     std::string prec = "0.";
@@ -77,7 +61,6 @@ BigFloat pi(int idx) {
         deg_16 = deg_16 * BigInt("16");
         k = k + BigFloat("1");
         ++cnt;
-        //show(res);
     } while(res > prc);
     finish = clock();
     double duration = (double)(finish - start) / CLOCKS_PER_SEC;
@@ -108,6 +91,7 @@ int main() {
 //    show(o2 / o3);
 //    show(o5 / o3);
 //    show(o5 - o1);
-    show(pi(100));
+    show(calculate_pi(100));
+    //show(12323.2323_bigfloat);
     return 0;
 }

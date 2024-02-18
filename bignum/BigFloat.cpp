@@ -6,16 +6,8 @@
 #include "BigInt.h"
 #include <algorithm>
 #define all(x) x.begin(), x.end()
-using namespace mathclass;
-//BigFloat::BigFloat(const BigFloat &num) {
-//    for (int i = 0; i < num.digit.size(); ++i) {
-//        digit.push_back(num.digit[i]);
-//    }
-//    sign = num.sign;
-//    index = num.index;
-//}
 
-BigFloat::BigFloat(const mathclass::BigInt &num) {
+BigFloat::BigFloat(const BigInt &num) {
     for (int i = 0; i < num.digit.size(); ++i) {
         digit.push_back(num.digit[i]);
     }
@@ -98,10 +90,6 @@ bool operator <(const BigFloat& left, const BigFloat& right) {
     if (left.sign != right.sign) {
         return left.sign < right.sign;
     }
-
-//    if (left.digit.size() == 0) {
-//        return right.index == 0;
-//    }
 
     if ((right.digit.size() - right.index) != (left.digit.size() - left.index)) {
         return (left.digit.size() - left.index) < (right.digit.size() - right.index);
@@ -251,7 +239,6 @@ const BigFloat operator *(const BigFloat& left, const BigFloat& right) {
     BigInt mul = left1 * right1;
     BigFloat ans_mul(mul);
     ans_mul.index = left.index + right.index;
-    //ans_mul.sign = left.sign * right.sign;
     ans_mul.delete_leadings_zeroes();
     while (ans_mul.index >= ans_mul.digit.size()) {
         ans_mul.digit.push_back('0');
