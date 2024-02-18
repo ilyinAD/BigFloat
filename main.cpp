@@ -93,5 +93,27 @@ int main() {
 //    show(o5 - o1);
     show(calculate_pi(100));
     //show(12323.2323_bigfloat);
+    //    BigFloat o1("12.3000");
+//    BigFloat o2("5");
+//    BigFloat o3("0");
+//    BigFloat o4("13");
+//    BigFloat o5("3");
+//    show(o1 * o2);
+//    show(o1 + o2);
+//    show(o3 * o4);
+//    show(o3 / o2);
+//    show(o2 / o5);
+//    show(o5 - o1);
+//    BigInt o1("12");
+//    BigInt o2("0");
+//    BigInt o3("20");
+//    BigInt o4("1");
+//    BigInt o5("-1003221");
+//    show(o1 * o2);
+//    show(o1 + o2);
+//    show(o3 * o4);
+//    show(o2 / o3);
+//    show(o5 / o3);
+//    show(o5 - o1);
     return 0;
 }
