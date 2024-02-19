@@ -6,6 +6,7 @@
 #include <algorithm>
 #define all(x) x.begin(), x.end()
 
+
 BigInt::BigInt(const BigInt &num) {
     for (int i = 0; i < num.digit.size(); ++i) {
         digit.push_back(num.digit[i]);

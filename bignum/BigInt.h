@@ -31,6 +31,7 @@ class BigInt {
         std::string digit;
         int sign;
 private:
+
     void delete_leadings_zeroes();
 };
 

@@ -1,11 +1,13 @@
 #include <iostream>
 #include "bignum/BigInt.h"
 #include "bignum/BigFloat.h"
-#include <algorithm>
-#include <vector>
 #pragma GCC optimize("O3")
 #pragma GCC optimize("unroll-loops")
 #pragma optimize("Ofast")
+#include <chrono>
+//#include "gtest/gtest.h"
+
+
 
 const BigFloat operator ""_bigfloat(const char *s) {
     return BigFloat(s);
@@ -34,7 +36,6 @@ void show(BigFloat a) {
     std::cout << std::endl;
 }
 
-#include <chrono>
 
 BigFloat calculate_pi(int idx) {
     clock_t start, finish;
@@ -69,6 +70,7 @@ BigFloat calculate_pi(int idx) {
 }
 
 int main() {
+
     show(calculate_pi(100));
     return 0;
 }

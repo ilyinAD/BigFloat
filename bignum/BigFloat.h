@@ -37,6 +37,7 @@ public:
     int index;
     int precision = 101;
     private:
+
         void delete_leadings_zeroes();
 };
 
