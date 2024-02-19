@@ -14,6 +14,7 @@ class BigInt {
         BigInt(const BigInt&);
         ~BigInt() = default;
         BigInt(const std::string s);
+        std::string get_val() const;
         friend bool operator <(const BigInt& left, const BigInt& right);
         friend bool operator >(const BigInt& left, const BigInt& right);
         friend bool operator ==(const BigInt& left, const BigInt& right);

@@ -6,7 +6,11 @@
 #include "BigInt.h"
 #include <algorithm>
 #define all(x) x.begin(), x.end()
-
+std::string BigFloat::get_val() {
+    std::string str = BigFloat::digit;
+    std::reverse(all(str));
+    return str;
+}
 BigFloat::BigFloat(const BigInt &num) {
     for (int i = 0; i < num.digit.size(); ++i) {
         digit.push_back(num.digit[i]);

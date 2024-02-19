@@ -20,6 +20,7 @@ public:
     BigFloat(const BigInt& num);
     ~BigFloat() = default;
     BigFloat(std::string s);
+    std::string get_val();
     friend bool operator <(const BigFloat& left, const BigFloat& right);
     friend bool operator >(const BigFloat& left, const BigFloat& right);
     friend bool operator ==(const BigFloat& left, const BigFloat& right);
@@ -37,7 +38,6 @@ public:
     int index;
     int precision = 101;
     private:
-
         void delete_leadings_zeroes();
 };
 

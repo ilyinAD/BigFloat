@@ -11,5 +11,5 @@ target_link_libraries(Project PUBLIC bignum)
 
 target_include_directories(Project PUBLIC "${PROJECT_BINARY_DIR}")
 add_subdirectory(googletest)
-add_executable(tests BigNum_tests.cpp)
-target_link_libraries(tests gtest bignum)
+add_executable(test1 BigNum_tests.cpp)
+target_link_libraries(test1 gtest gtest_main bignum)

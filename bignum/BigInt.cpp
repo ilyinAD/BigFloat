@@ -6,6 +6,11 @@
 #include <algorithm>
 #define all(x) x.begin(), x.end()
 
+std::string BigInt::get_val() const{
+    std::string str = BigInt::digit;
+    std::reverse(all(str));
+    return str;
+}
 
 BigInt::BigInt(const BigInt &num) {
     for (int i = 0; i < num.digit.size(); ++i) {
@@ -287,7 +292,7 @@ const BigInt operator /(const BigInt& left, const BigInt& right) {
 
     int idx = right1.digit.size();
     std::string sl;
-    for (int i = left.digit.size() - 1; i > left.digit.size() - 1 - idx; --i) {
+    for (int i = ((int)left.digit.size() - 1); i > ((int)left.digit.size() - 1 - idx); --i) {
         sl += (left.digit[i]);
     }
     std::string ans;
