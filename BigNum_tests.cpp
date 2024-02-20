@@ -325,3 +325,11 @@ TEST(BigFloatTest, DivisionTest3) {
     BigFloat obj3("0.2");
     ASSERT_TRUE((obj1 / obj2) == obj3);
 }
+
+//Calculate Pi test
+
+TEST(BigFloatTest, CalculatePiTest) {
+    BigFloat obj2 = calculate_pi(100);
+    std::string str = obj2.get_val().substr(0, 100);
+    ASSERT_TRUE(str == "3141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067");
+}

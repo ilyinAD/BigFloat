@@ -21,6 +21,7 @@ public:
     ~BigFloat() = default;
     BigFloat(std::string s);
     std::string get_val();
+
     friend bool operator <(const BigFloat& left, const BigFloat& right);
     friend bool operator >(const BigFloat& left, const BigFloat& right);
     friend bool operator ==(const BigFloat& left, const BigFloat& right);
@@ -40,6 +41,5 @@ public:
     private:
         void delete_leadings_zeroes();
 };
-
-
+BigFloat calculate_pi(int idx);
 #endif //BIGFLOAT_BIGFLOAT_H

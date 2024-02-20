@@ -37,37 +37,7 @@ void show(BigFloat a) {
 }
 
 
-BigFloat calculate_pi(int idx) {
-    clock_t start, finish;
-    start = clock();
-    BigFloat Pi("0");
-    BigInt deg_16("1");
-    std::string prec = "0.";
-    int idx1 = idx;
-    while (idx1 > 0) {
-        prec += '0';
-        --idx1;
-    }
-    prec += '1';
-    BigFloat prc(prec);
-    BigFloat res = {"0"};
-    BigFloat k("0");
-    int cnt = 0;
-    do  {
-        res = (BigFloat("1") / deg_16);
-        BigFloat res1 = (BigFloat("4") / (BigFloat("8") * k + BigFloat("1"))) - (BigFloat("2") / (BigFloat("8") * k + BigFloat("4"))) -
-                        (BigFloat("1") / (BigFloat("8") * k + BigFloat("5"))) - (BigFloat("1") / (BigFloat("8") * k + BigFloat("6")));
-        res = res * res1;
-        Pi = Pi + res;
-        deg_16 = deg_16 * BigInt("16");
-        k = k + BigFloat("1");
-        ++cnt;
-    } while(res > prc);
-    finish = clock();
-    double duration = (double)(finish - start) / CLOCKS_PER_SEC;
-    std::cout << duration << ' '  << cnt << std::endl;
-    return Pi;
-}
+
 
 int main() {
 
