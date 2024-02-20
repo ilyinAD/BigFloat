@@ -45,6 +45,7 @@ BigInt::BigInt(const std::string s) {
     for (int i = s.size() - 1; i >= ind; --i) {
         BigInt::digit += s[i];
     }
+    BigInt::delete_leadings_zeroes();
 }
 void BigInt::delete_leadings_zeroes() {
     if (BigInt::digit.size() == 1 && BigInt::digit[0] == '0') {
@@ -258,6 +259,9 @@ const BigInt operator *(const BigInt& left, const BigInt& right) {
         }
     }
     mul.delete_leadings_zeroes();
+    if (mul.digit.size() == 1 && mul.digit[0] == '0') {
+        mul.sign = 1;
+    }
     return mul;
 }
 

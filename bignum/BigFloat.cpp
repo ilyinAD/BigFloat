@@ -40,6 +40,7 @@ BigFloat::BigFloat(std::string s) {
         ++ind;
     }
     if (ind == s.size()) {
+        BigFloat::digit = "0";
         BigFloat::sign = 1;
         return;
     }
@@ -54,6 +55,7 @@ BigFloat::BigFloat(std::string s) {
     if (BigFloat::index == BigFloat::digit.size()) {
         BigFloat::digit.push_back('0');
     }
+    BigFloat::delete_leadings_zeroes();
 }
 
 void BigFloat::delete_leadings_zeroes() {
@@ -188,7 +190,7 @@ const BigFloat operator +(const BigFloat& left, const BigFloat& right) {
     BigInt add = in1 + in2;
     BigFloat add_ans(add);
     add_ans.index = std::max(left.index, right.index);
-    if (add_ans.index == add_ans.digit.size()) {
+    while (add_ans.index >= add_ans.digit.size()) {
         add_ans.digit.push_back('0');
     }
     add_ans.delete_leadings_zeroes();
@@ -228,7 +230,7 @@ const BigFloat operator -(const BigFloat& left, const BigFloat& right) {
     BigInt sub = in1 - in2;
     BigFloat sub_ans(sub);
     sub_ans.index = std::max(left.index, right.index);
-    if (sub_ans.index == sub_ans.digit.size()) {
+    while (sub_ans.index >= sub_ans.digit.size()) {
         sub_ans.digit.push_back('0');
     }
     sub_ans.delete_leadings_zeroes();
@@ -243,10 +245,11 @@ const BigFloat operator *(const BigFloat& left, const BigFloat& right) {
     BigInt mul = left1 * right1;
     BigFloat ans_mul(mul);
     ans_mul.index = left.index + right.index;
-    ans_mul.delete_leadings_zeroes();
+
     while (ans_mul.index >= ans_mul.digit.size()) {
         ans_mul.digit.push_back('0');
     }
+    ans_mul.delete_leadings_zeroes();
     return ans_mul;
 }
 
