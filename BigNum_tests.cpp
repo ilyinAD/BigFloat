@@ -70,6 +70,12 @@ TEST(BigIntTest, MinusTest1) {
     BigInt obj2("123");
     ASSERT_EQ((obj1 - obj2).get_val(), "1");
     ASSERT_TRUE((obj1 - obj2).sign == 1);
+    show(obj1);
+    std::cerr << " - ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 - obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigIntTest, MinusTest2) {
@@ -87,9 +93,9 @@ TEST(BigIntTest, MinusTest3) {
 }
 
 TEST(BigIntTest, MinusTest4) {
-    BigInt obj1("-18");
-    BigInt obj2("-19");
-    ASSERT_EQ((obj1 - obj2).get_val(), "1");
+    BigInt obj1("-123");
+    BigInt obj2("-9012");
+    ASSERT_EQ((obj1 - obj2).get_val(), "8889");
     ASSERT_TRUE((obj1 - obj2).sign == 1);
 }
 
@@ -99,6 +105,12 @@ TEST(BigIntTest, PlusTest1) {
     BigInt obj2("12");
     ASSERT_EQ((obj1 + obj2).get_val(), "31");
     ASSERT_TRUE((obj1 + obj2).sign == 1);
+    show(obj1);
+    std::cerr << " + ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 + obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigIntTest, PlusTest2) {
@@ -116,10 +128,10 @@ TEST(BigIntTest, PlusTest3) {
 }
 
 TEST(BigIntTest, PlusTest4) {
-    BigInt obj1("-18");
-    BigInt obj2("-19");
-    ASSERT_EQ((obj1 + obj2).get_val(), "37");
-    ASSERT_TRUE((obj1 + obj2).sign == -1);
+    BigInt obj1("9999");
+    BigInt obj2("1");
+    ASSERT_EQ((obj1 + obj2).get_val(), "10000");
+    ASSERT_TRUE((obj1 + obj2).sign == 1);
 }
 
 //multiply operator tests
@@ -128,6 +140,12 @@ TEST(BigIntTest, MultiplyTest1) {
     BigInt obj2("0");
     ASSERT_EQ((obj1 * obj2).get_val(), "0");
     ASSERT_TRUE((obj1 * obj2).sign == 1);
+    show(obj1);
+    std::cerr << " * ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 * obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigIntTest, MultiplyTest2) {
@@ -145,9 +163,9 @@ TEST(BigIntTest, MultiplyTest3) {
 }
 
 TEST(BigIntTest, MultiplyTest4) {
-    BigInt obj1("15");
-    BigInt obj2("1");
-    ASSERT_EQ((obj1 * obj2).get_val(), "15");
+    BigInt obj1("1092");
+    BigInt obj2("1809");
+    ASSERT_EQ((obj1 * obj2).get_val(), "1975428");
     ASSERT_TRUE((obj1 * obj2).sign == 1);
 }
 
@@ -157,6 +175,12 @@ TEST(BigIntTest, DivisionTest1) {
     BigInt obj2("8");
     ASSERT_EQ((obj1 / obj2).get_val(), "0");
     ASSERT_TRUE((obj1 / obj2).sign == 1);
+    show(obj1);
+    std::cerr << " / ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 / obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigIntTest, DivisionTest2) {
@@ -174,9 +198,9 @@ TEST(BigIntTest, DivisionTest3) {
 }
 
 TEST(BigIntTest, DivisionTest4) {
-    BigInt obj1("-17");
-    BigInt obj2("-3");
-    ASSERT_EQ((obj1 / obj2).get_val(), "5");
+    BigInt obj1("-1789");
+    BigInt obj2("-35");
+    ASSERT_EQ((obj1 / obj2).get_val(), "51");
     ASSERT_TRUE((obj1 / obj2).sign == 1);
 }
 
@@ -244,6 +268,12 @@ TEST(BigFloatTest, MinusTest1) {
     BigFloat obj2("1.01");
     BigFloat obj3("-0.02");
     ASSERT_TRUE((obj1 - obj2) == obj3);
+    show(obj1);
+    std::cerr << " - ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 - obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigFloatTest, MinusTest2) {
@@ -266,6 +296,12 @@ TEST(BigFloatTest, PlusTest1) {
     BigFloat obj2("1.01");
     BigFloat obj3("2");
     ASSERT_TRUE((obj1 + obj2) == obj3);
+    show(obj1);
+    std::cerr << " + ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 + obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigFloatTest, PlusTest2) {
@@ -288,6 +324,12 @@ TEST(BigFloatTest, MultiplyTest1) {
     BigFloat obj2("1.3");
     BigFloat obj3("1.56");
     ASSERT_TRUE((obj1 * obj2) == obj3);
+    show(obj1);
+    std::cerr << " * ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 * obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigFloatTest, MultiplyTest2) {
@@ -298,9 +340,9 @@ TEST(BigFloatTest, MultiplyTest2) {
 }
 
 TEST(BigFloatTest, MultiplyTest3) {
-    BigFloat obj1("-0.4");
-    BigFloat obj2("12.2");
-    BigFloat obj3("-4.88");
+    BigFloat obj1("19.22");
+    BigFloat obj2("12.32");
+    BigFloat obj3("236.7904");
     ASSERT_TRUE((obj1 * obj2) == obj3);
 }
 
@@ -310,6 +352,12 @@ TEST(BigFloatTest, DivisionTest1) {
     BigFloat obj2("1.3");
     BigFloat obj3("0");
     ASSERT_TRUE((obj1 / obj2) == obj3);
+    show(obj1);
+    std::cerr << " / ";
+    show(obj2);
+    std::cerr << " = ";
+    show(obj1 / obj2);
+    std::cerr << '\n';
 }
 
 TEST(BigFloatTest, DivisionTest2) {

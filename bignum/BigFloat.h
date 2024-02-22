@@ -38,8 +38,11 @@ public:
     int sign;
     int index;
     int precision = 101;
-    private:
-        void delete_leadings_zeroes();
+
+private:
+    void delete_leadings_zeroes();
 };
 BigFloat calculate_pi(int idx);
+const BigFloat operator ""_bigfloat(const char *s);
+void show(BigFloat a);
 #endif //BIGFLOAT_BIGFLOAT_H

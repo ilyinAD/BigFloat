@@ -7,6 +7,22 @@
 #include <algorithm>
 #include <chrono>
 #define all(x) x.begin(), x.end()
+const BigFloat operator ""_bigfloat(const char *s) {
+    return BigFloat(s);
+}
+
+void show(BigFloat a) {
+    if (a.sign == -1) {
+        std::cerr << '-';
+    }
+    for (int i = a.digit.size() - 1; i >= 0; --i) {
+        std::cerr << a.digit[i];
+        if (i == a.index) {
+            std::cerr << '.';
+        }
+    }
+    //std::cout << std::endl;
+}
 
 BigFloat calculate_pi(int idx) {
     clock_t start, finish;

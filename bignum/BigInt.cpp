@@ -6,6 +6,16 @@
 #include <algorithm>
 #define all(x) x.begin(), x.end()
 
+void show(BigInt a) {
+    if (a.sign == -1) {
+        std::cerr << '-';
+    }
+    for (int i = a.digit.size() - 1; i >= 0; --i) {
+        std::cerr << a.digit[i];
+    }
+    //std::cout << std::endl;
+}
+
 std::string BigInt::get_val() const{
     std::string str = BigInt::digit;
     std::reverse(all(str));
